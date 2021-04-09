@@ -1,8 +1,8 @@
-package com.nefu.gateway.component.impl;
+package com.nefu.login.component.impl;
 
-import com.nefu.gateway.component.IVerifyCodeGen;
-import com.nefu.gateway.component.RandomUtils;
-import com.nefu.gateway.component.VerifyCode;
+import com.nefu.login.component.IVerifyCodeGen;
+import com.nefu.login.component.RandomUtils;
+import com.nefu.login.component.VerifyCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

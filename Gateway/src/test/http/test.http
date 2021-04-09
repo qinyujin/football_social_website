@@ -1,0 +1,20 @@
+#查询所有用户
+#eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJIWHdaME13VS9CYUZ4MWpjR0t1bld6bEVocXFMekNWMEVSelF4Wkw3UUF5cU5CaFdzWnd4aElKbFJkRC9PSjZEeUpjL2JyQWQ2SGJpd3hpeXJ3dlZIRXJJOTN5MjZjQmlsSkt1T3RMSnc1bWU3VWVDaEgzOGdsaW9QNS9TUklDN1dEc0oxRDFyOHRrdlR1Y2VIZ25GNjUxTk95Vkw4WjVSRGdYY1NHN1VRVzA9IiwiZXhwIjoxNjE3OTczMzcyLCJpYXQiOjE2MTc5NjYxNzJ9.Jdn03rdWzGzFTfDhjnQdpULgwvp91sXBZZtJXV97KgA
+GET http://localhost:8003/api/user/users
+Accept: application/json
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJIWHdaME13VS9CYUZ4MWpjR0t1bld6bEVocXFMekNWMEVSelF4Wkw3UUF5cU5CaFdzWnd4aElKbFJkRC9PSjZEeUpjL2JyQWQ2SGJpd3hpeXJ3dlZIRXJJOTN5MjZjQmlsSkt1T3RMSnc1bWU3VWVDaEgzOGdsaW9QNS9TUklDN1dEc0oxRDFyOHRrdlR1Y2VIZ25GNjUxTk95Vkw4WjVSRGdYY1NHN1VRVzA9IiwiZXhwIjoxNjE3OTczMzcyLCJpYXQiOjE2MTc5NjYxNzJ9.Jdn03rdWzGzFTfDhjnQdpULgwvp91sXBZZtJXV97KgA
+
+###
+#登陆
+POST http://localhost:8003/api/login?verifyCode=M3EB
+Content-Type: application/json
+
+{
+  "num": "001",
+  "password": "123456"
+}
+
+###
+#验证码
+GET http://localhost:8003/api/verifyCode?timestamp=1617966159291
+Accept: application/json

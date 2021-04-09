@@ -1,4 +1,4 @@
-package com.nefu.mvc.component;
+package com.nefu.login.component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

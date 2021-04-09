@@ -1,8 +1,22 @@
-package com.nefu.gateway.controller;
+package com.nefu.login.controller;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nefu.login.component.*;
+import com.nefu.login.entity.User;
+import com.nefu.login.feign.ConsumerFeignClient;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author :覃玉锦
@@ -14,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/")
 @Slf4j
 public class LoginController {
-/*
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -28,13 +41,13 @@ public class LoginController {
 
     //通过微服务来进行调用
     @Autowired
-    private UserServiceImpl userServiceImpl;
-
-    @Autowired
-    private UserRoleServiceImpl userRoleServiceImpl;
+    private ConsumerFeignClient consumerFeignClient;
 
     @Autowired
     private RedisUtil redisUtil;
+
+    @Autowired
+    private TransferJson transferJson;
 
     @PostMapping("login")
     public CommonResult login(@RequestBody User user, @RequestParam("verifyCode") String code) {
@@ -54,12 +67,14 @@ public class LoginController {
         if (!passVerify) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "验证码错误或者过期，请重试！");
         }
-        User u = userServiceImpl.getUserByNum(user.getNum());
+        User u = (User) transferJson.transferToClz(consumerFeignClient.getUserByNum(user.getNum()).getData().toString(),User.class);
         if (u == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "用户不存在，请重试");
         try {
             String realPwd = RSAUtil.decrypt(u.getPassword(), privateKey);
             //通过把用户的token封装到jwt中来实现登陆状态的认证
-            MyToken t = new MyToken(user.getId(), userRoleServiceImpl.getRidsByUid(user.getId()));
+            List<Integer> rids = (List<Integer>) transferJson.transferToClz(consumerFeignClient.getRidsByUid(u.getId()).getData().toString()
+            ,List.class);
+            MyToken t = new MyToken(u.getId(), rids);
             //把自定义的token封装为json格式
             String json = objectMapper.writeValueAsString(t);
             //对json格式再进行加密，防止被拦截之后以明文形式存在
@@ -77,5 +92,5 @@ public class LoginController {
             e.printStackTrace();
         }
         return new CommonResult(401,"密码错误");
-    }*/
+    }
 }

@@ -1,6 +1,6 @@
-package com.nefu.gateway.component;
+package com.nefu.login.component;
 
-import org.apache.commons.codec.binary.Base64;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;

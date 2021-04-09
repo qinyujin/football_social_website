@@ -1,9 +1,9 @@
-package com.nefu.gateway.controller;
+package com.nefu.login.controller;
 
-import com.nefu.gateway.component.IVerifyCodeGen;
-import com.nefu.gateway.component.RedisUtil;
-import com.nefu.gateway.component.VerifyCode;
-import com.nefu.gateway.component.impl.SimpleCharVerifyCodeGenImpl;
+import com.nefu.login.component.IVerifyCodeGen;
+import com.nefu.login.component.RedisUtil;
+import com.nefu.login.component.VerifyCode;
+import com.nefu.login.component.impl.SimpleCharVerifyCodeGenImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/api/")
 @Slf4j
-public class VertifyController {
+public class VerifyController {
     @Autowired
     private RedisUtil redisUtil;
 

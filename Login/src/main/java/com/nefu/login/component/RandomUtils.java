@@ -1,4 +1,4 @@
-package com.nefu.gateway.component;
+package com.nefu.login.component;
 
 import java.awt.*;
 import java.util.Random;

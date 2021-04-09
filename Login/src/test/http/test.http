@@ -1,0 +1,11 @@
+POST http://localhost:8002/api/login?verifyCode=NNY4
+Content-Type: application/json
+
+{
+  "num": "001",
+  "password": "123456"
+}
+
+###
+GET http://localhost:8002/api/verifyCode?timestamp=1617959319298
+Accept: application/json

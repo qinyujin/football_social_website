@@ -1,10 +1,14 @@
 package com.nefu.mvc.controller;
 
 import com.nefu.mvc.component.CommonResult;
+import com.nefu.mvc.component.TransferJson;
 import com.nefu.mvc.entity.User;
+import com.nefu.mvc.service.UserRoleService;
 import com.nefu.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author :覃玉锦
@@ -13,10 +17,17 @@ import org.springframework.web.bind.annotation.*;
  * 用户类的相关操作、角色类的相关操作、权限类的相关操作
  */
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/user/")
 public class UserManagerController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRoleService userRoleService;
+
+    //用于进行数据的json化
+    @Autowired
+    private TransferJson transferJson;
 
     @PostMapping("user")
     public CommonResult saveUser(@RequestBody User user){
@@ -38,20 +49,27 @@ public class UserManagerController {
 
     @GetMapping("users")
     public CommonResult getUsers(){
-        return new CommonResult(200,"当前的全部用户",userService.getUsers());
+        return new CommonResult(200,"当前的全部用户",transferJson.transferToJson(userService.getUsers()));
     }
 
     @GetMapping("userid/{id}")
     public CommonResult getUserById(@PathVariable(value = "id") int id){
         User user = userService.getUserById(id);
         return user == null ? new CommonResult(401,"用户不存在")
-                : new CommonResult(200,"查找到id为"+id+"的用户", user);
+                : new CommonResult(200,"查找到id为"+id+"的用户", transferJson.transferToJson(user));
     }
 
     @GetMapping("usernum")
     public CommonResult getUserByNum(@RequestParam("num") String num){
         User user = userService.getUserByNum(num);
         return user == null ? new CommonResult(401,"用户不存在")
-                : new CommonResult(200,"查找到用户",user);
+                : new CommonResult(200,"查找到用户",transferJson.transferToJson(user));
+    }
+
+    @GetMapping("rids/{uid}")
+    public CommonResult getRidsByUid(@PathVariable("uid") int uid){
+        List<Integer> rids = userRoleService.getRidsByUid(uid);
+        return rids.size()==0 ? new CommonResult(401,"该用户暂未拥有角色")
+                : new CommonResult(200,"该用户的角色id集",transferJson.transferToJson(rids));
     }
 }

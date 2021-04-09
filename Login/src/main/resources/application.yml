@@ -1,18 +1,12 @@
 privateKey: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAI+ud9zHMU6QcuhiFswBvA/YYOIPfQ1qeSjhZzfb1Wzo63rBAjv6lipjfYY+6ftKC8zofcLBK6OVYtkK1tPgwmkJ4MoUY+hY2t+QPyGCJogpFqIkUSzeszu/M4Xlf2WFQJdB5m+fQV3fAhQi91Viz8H85sGQsZEfryK/QUuDUYnFAgMBAAECgYEAjeCPx1iCXbvRW5qQPD5yP4tAj7kPmNHMdgutasEOzI5rCDnSRPu6kHzRlGBHl7WUVXA1zrwEpXF7vCox2+KS1Lu2a1n1S86YXr6PzDfASohKZuk6e0zgzSI35WpWrD53ScXiE4PyplSNX5KqmAIh1fn3cZx510pQNohOA3hptwECQQDa0n3Pgzf8XBBKoTdztWf1DihAFfWu1x0ChjmYC6RdjRe0A7ep1w/cPEhmUxSF8I8sP3mhTD/SXFeFjikuYMBhAkEAqBfJrSzvaxNzNRI+zwb/JU5AvRYhlSEwgLOxMzFZWT8NajhZhCRtXDtXCeQhSsY+lKEgmSr+QoaeyoGNWiZT5QJAXUd3bBsypXgVVcrtmXyOKS90xwTVa0e1zRqsuHzV/y8jGJCxHUxZLXfhIQVvbT1Duwf/8FtRpXnJsVwNgACsYQJAaPbRvQ3+Q0LWAiHujqCz2rvOuUSEm/cprnSHBoyeWpiA6/9cBqQolhuH8mk+UM8SbQVgscSjGS+vII1dkxmz8QJAfYePvHIYTWIWAJcGT3335dDcRHv4sJr6wPRQL2bqWSpW0S5dwugbbl8INKQiDkrNLwRZSGxsBY7z4Yf/8K3lnA==df723820
 publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCPrnfcxzFOkHLoYhbMAbwP2GDiD30Nanko4Wc329Vs6Ot6wQI7+pYqY32GPun7SgvM6H3CwSujlWLZCtbT4MJpCeDKFGPoWNrfkD8hgiaIKRaiJFEs3rM7vzOF5X9lhUCXQeZvn0Fd3wIUIvdVYs/B/ObBkLGRH68iv0FLg1GJxQIDAQAB
 
+server:
+  port: 8002
 spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 127.0.0.1
   application:
-    name: MVC-server
-  datasource:
-    username: root
-    password: 957ilovemyfamily
-    url: jdbc:mysql://127.0.0.1:3306/football_social_website?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
-  redis:
-
-server:
-  port: 8001
+    name: login-service
