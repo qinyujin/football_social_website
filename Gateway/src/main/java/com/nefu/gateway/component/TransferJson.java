@@ -1,4 +1,4 @@
-package com.nefu.mvc.component;
+package com.nefu.gateway.component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

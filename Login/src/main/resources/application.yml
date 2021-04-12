@@ -9,4 +9,4 @@ spring:
       discovery:
         server-addr: 127.0.0.1
   application:
-    name: login-service
+    name: login-server

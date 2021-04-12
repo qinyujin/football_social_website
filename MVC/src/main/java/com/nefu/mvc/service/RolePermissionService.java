@@ -18,4 +18,6 @@ public interface RolePermissionService {
     List<Integer> getRidByPid(int pid);
 
     List<Integer> getPidByRid(int rid);
+
+    List<Integer> getRids();
 }

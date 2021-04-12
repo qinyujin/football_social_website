@@ -1,4 +1,10 @@
-POST http://localhost:8002/api/login?verifyCode=NNY4
+GET http://localhost:8002/api/renew
+Accept: application/json
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJoSFB2UGJlYzM5OGIvaitIemJkZDdLK3o4V0duVkF1dEpDQkF1SllIbWRvY1ZnTzB2bXdjSUhNMGVreDlBQ3ovWW85R0pkOUN5azJyNCtEOVdIMTdpV1BGL0oxS3EyZy9FNlprTkFBMXBrYmN1aWdLd2Q3MXd5OE1wUVNqZFA0ZDdndlU0eWFQSnFWdDFvQUk3MFMrY1pqRStscEp6TjQyeVYyRm5OeDJSWGc9IiwiZXhwIjoxNjE4MTkyMTAyLCJpYXQiOjE2MTgxOTIwNDJ9.Ji8ZrmA6fA0HAIY-AvqNY6qQic1w_bsNX4V9bBddzlI
+
+
+###
+POST http://localhost:8002/api/login?verifyCode=RWFC
 Content-Type: application/json
 
 {
@@ -7,5 +13,5 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8002/api/verifyCode?timestamp=1617959319298
+GET http://localhost:8002/api/verifyCode?timestamp=1618191752390
 Accept: application/json

@@ -49,6 +49,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         ArrayList<String> whiteList = new ArrayList<>();
         whiteList.add("/api/verifyCode");
         whiteList.add("/api/login");
+        whiteList.add("/api/renew");
         return whiteList;
     }
 
@@ -79,6 +80,9 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         } catch (JWTVerificationException e) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"token校验失败!");
         }
+        //如果jwt合法，在这里需要进行续期操作，只有当最后一次使用的时间且超时之后才属于
+        //一种解决方案：需要在前端进行实现，提供一个token刷新的接口，然后对于一条请求来说，判断这条请求的jwt时间
+        //如果当前jwt剩余时间 < 5 min，那么调用刷新token的接口，对token进行续期。
 
         DecodedJWT jwt = JWT.decode(token);
         String auth = jwt.getAudience().get(0);

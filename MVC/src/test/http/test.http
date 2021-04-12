@@ -1,3 +1,14 @@
+#查询角色和权限对应关系集合
+GET http://localhost:8001/api/user/role_permission
+Accept: application/json
+
+###
+#查询所有权限
+GET http://localhost:8001/api/user/permissions
+Accept: application/json
+
+###
+#根据uid查询rids
 GET http://localhost:8001/api/user/rids/3
 Accept: application/json
 
@@ -47,7 +58,7 @@ Content-Type: application/json
 }
 
 ###
-
+#登陆
 POST http://localhost:8001/api/user/login?verifyCode=UQZH
 Content-Type: application/json
 
@@ -57,6 +68,7 @@ Content-Type: application/json
 }
 
 ###
+#验证码
 GET http://localhost:8001/api/user/verifyCode?timestamp=1617934675998
 Accept: application/json
 

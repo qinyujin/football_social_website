@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author :覃玉锦
  * @create :2020-09-11 15:58:00
+ * redis集成springboot的工具类，需要配合redisConfig文件来保证存储的内容不会出现乱码
  */
 @Component
 public class RedisUtil {
@@ -501,9 +502,11 @@ public class RedisUtil {
      * @param value 值
      * @return
      */
-    public boolean lSet(String key, List<Object> value) {
+    public boolean lSet(String key, List<Object> value,boolean flag) {
         try {
-            redisTemplate.opsForList().rightPushAll(key, value);
+            for (int i = 0; i < value.size(); i++) {
+                redisTemplate.opsForList().rightPush(key,value.get(i));
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -518,11 +521,14 @@ public class RedisUtil {
      * @param key   键
      * @param value 值
      * @param time  时间(秒)
+     * @param flag 用于做区分，因为原始lset方法是Object类型会和list类型冲突。
      * @return
      */
-    public boolean lSet(String key, List<Object> value, long time) {
+    public boolean lSet(String key, List<Object> value, long time,boolean flag) {
         try {
-            redisTemplate.opsForList().rightPushAll(key, value);
+            for (int i = 0; i < value.size(); i++) {
+                redisTemplate.opsForList().rightPush(key,value.get(i));
+            }
             if (time > 0)
                 expire(key, time);
             return true;

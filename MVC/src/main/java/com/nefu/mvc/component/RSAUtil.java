@@ -12,6 +12,9 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 非对称加密算法，使用公钥和私钥完成加解密工作
+ */
 @Component
 public class RSAUtil {
     private static Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥

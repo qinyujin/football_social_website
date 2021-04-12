@@ -3,12 +3,17 @@ package com.nefu.mvc.controller;
 import com.nefu.mvc.component.CommonResult;
 import com.nefu.mvc.component.TransferJson;
 import com.nefu.mvc.entity.User;
+import com.nefu.mvc.service.PermissionService;
+import com.nefu.mvc.service.RolePermissionService;
 import com.nefu.mvc.service.UserRoleService;
 import com.nefu.mvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author :覃玉锦
@@ -24,6 +29,12 @@ public class UserManagerController {
 
     @Autowired
     private UserRoleService userRoleService;
+
+    @Autowired
+    private PermissionService permissionService;
+
+    @Autowired
+    private RolePermissionService rolePermissionService;
 
     //用于进行数据的json化
     @Autowired
@@ -71,5 +82,29 @@ public class UserManagerController {
         List<Integer> rids = userRoleService.getRidsByUid(uid);
         return rids.size()==0 ? new CommonResult(401,"该用户暂未拥有角色")
                 : new CommonResult(200,"该用户的角色id集",transferJson.transferToJson(rids));
+    }
+
+    @GetMapping("permissions")
+    public CommonResult getPermissions(){
+        return new CommonResult(200,"权限集",
+                transferJson.transferToJson(permissionService.getPermissions()));
+    }
+
+    @GetMapping("role_permission")
+    public CommonResult getRolePermissions(){
+        //传形如 1 : {1,2,3}
+        //      2 : {3}
+        //的数据
+        Map<Integer,List<Integer>> res = new HashMap<>();
+        List<Integer> rids = rolePermissionService.getRids();
+        for (Integer rid : rids) {
+            List<Integer> pids = rolePermissionService.getPidByRid(rid);
+            ArrayList<Integer> temp = new ArrayList<>();
+            for (Integer pid : pids) {
+                temp.add(pid);
+            }
+            res.put(rid,temp);
+        }
+        return new CommonResult(200,"角色和权限对应关系集合",res);
     }
 }

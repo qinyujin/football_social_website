@@ -1,13 +1,21 @@
 package com.nefu.mvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nefu.mvc.component.RedisUtil;
 import com.nefu.mvc.component.TransferJson;
+import com.nefu.mvc.entity.Permission;
 import com.nefu.mvc.entity.User;
+import com.nefu.mvc.entity.Video;
+import com.nefu.mvc.mapper.PermissionMapper;
+import com.nefu.mvc.mapper.RolePermissionMapper;
+import com.nefu.mvc.service.PermissionService;
+import com.nefu.mvc.service.RolePermissionService;
+import com.nefu.mvc.service.VideoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author :覃玉锦
@@ -16,19 +24,52 @@ import java.util.List;
 @SpringBootTest
 class MVCApplicationTest {
 
+    private final String ROLE_PERMISSION_KEY = "rolePermissionList";
+
+    @Autowired
+    private PermissionMapper permissionMapper;
+
+    @Autowired
+    private PermissionService permissionService;
+
+    @Autowired
+    private RolePermissionMapper RolePermissionMapper;
+
+    @Autowired
+    private RolePermissionService rolePermissionService;
+
     @Autowired
     private TransferJson transferJson;
 
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private VideoService videoService;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Test
     void test1(){
-        User user = new User(1,"赵四","001","1234","D://xxxx");
-        String s = transferJson.transferToJson(user);
-        System.out.println(s);
-        User o = (User) transferJson.transferToClz(s, User.class);
-        System.out.println(o);
+        /*List<Map<Integer,List<Integer>>> res = new ArrayList<>();
+        Map<Integer,List<Integer>> map = new HashMap<>();
+        map.put(1, Arrays.asList(1,2,3));
+        map.put(2, Arrays.asList(1));
+        System.out.println(map);
+        for (Map.Entry<Integer, List<Integer>> entry : map.entrySet()) {
+            //形如1:{1,2,3}
+            List<Object> temp = new ArrayList<>();
+            for (Integer v : entry.getValue()) {
+                temp.add(v);
+            }
+            redisUtil.lSet(ROLE_PERMISSION_KEY+":"+entry.getKey(),temp,60*60*24,true);
+        }*/
+        List<Object> res = redisUtil.lGet(ROLE_PERMISSION_KEY + ":" + "1", 0, -1);
+        List<Object> res1 = redisUtil.lGet(ROLE_PERMISSION_KEY + ":" + "2", 0, -1);
+        System.out.println(res);
+        System.out.println((int)res.get(0));
+        System.out.println(res1);
     }
 
     @Test
@@ -41,5 +82,43 @@ class MVCApplicationTest {
         for (int i = 0; i < o.size(); i++) {
             System.out.println(o.get(i));
         }
+    }
+
+    @Test
+    void videoTest(){
+        Video video = new Video();
+        video.setVideoAuthor("qyj");
+    }
+
+    @Test
+    void redisUTest(){
+        final String permissionKey = "permissionList";
+        final String rolePermissionKey = "rolePermissionList";
+
+        /*List<Object> permissionList = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            permissionList.add(new Permission(i+1,"p"+i,"xxx","GET/POST/PATCH/DELETE"));
+        }
+        redisUtil.lSet(permissionKey,permissionList,60*60*24,true);*/
+        /*List<Object> permissionList = redisUtil.lGet(permissionKey, 0, -1);
+        System.out.println(permissionList);
+        System.out.println(permissionList.size());
+        System.out.println(permissionList.get(0));
+        Permission p = (Permission) permissionList.get(0);
+        System.out.println(p.getMethod());*/
+
+        List<Object> objects = redisUtil.lGet(permissionKey, 0, -1);
+        System.out.println(objects == null);
+        System.out.println(objects.size());
+    }
+
+    @Test
+    void permissionTest(){
+        Permission p = new Permission(3,"测试权限1","fjisjfis","fjsjfis");
+//        permissionService.savePermission(p);
+//        permissionService.deletePermission(3);
+//        permissionService.updatePermission(p);
+        System.out.println(permissionService.getPermissions());
+        System.out.println(permissionService.getPermissionById(3));
     }
 }

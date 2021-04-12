@@ -5,7 +5,7 @@ server:
   port: 8003
 spring:
   application:
-    name: gateway
+    name: gateway-server
   cloud:
     nacos:
       discovery:
@@ -21,8 +21,8 @@ spring:
 #          uri: http://localhost:8000       #不推荐使用，写死了端口，不能动态改变不需要注册为服务
           predicates:                      #断言。满足条件则运行，有多种参数：path、after、before、between。
             - Path=/api/user/**
-        - id: gateway        #路由名，保证唯一
-          uri: lb://login-service        #推荐使用，使用动态路由。lb：loadBalance负载均衡,但是需要注册为服务
+        - id: login        #路由名，保证唯一
+          uri: lb://login-server        #推荐使用，使用动态路由。lb：loadBalance负载均衡,但是需要注册为服务
             #          uri: http://localhost:8000       #不推荐使用，写死了端口，不能动态改变不需要注册为服务
           predicates:                      #断言。满足条件则运行，有多种参数：path、after、before、between。
-            - Path=/api/login,/api/verifyCode
+            - Path=/api/login,/api/verifyCode,/api/renew
