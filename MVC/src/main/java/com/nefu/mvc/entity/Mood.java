@@ -20,5 +20,5 @@ public class Mood {
     private Date releaseTime;
     private String content;
     //动态点赞数
-    private int like;
+    private int likeCount;
 }

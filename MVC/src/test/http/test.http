@@ -1,3 +1,168 @@
+GET http://localhost:8001/api/mood/mood/1
+Accept: application/json
+
+###
+GET http://localhost:8001/api/mood/moods
+Accept: application/json
+
+###
+#更新动态
+PATCH http://localhost:8001/api/mood/mood
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 2,
+  "content": "今天看到一个帅哥，长得很像C罗，搞得我脸红心跳的   测试",
+  "likeCount": 201
+}
+
+###
+#根据id删除动态
+DELETE http://localhost:8001/api/mood/mood?id=2
+Accept: application/json
+
+###
+#添加动态
+POST http://localhost:8001/api/mood/mood
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "content": "我不喜欢写傻逼代码",
+  "likeCount": 2000
+}
+
+###
+#根据id查找聊天室
+GET http://localhost:8001/api/chat_room/chat_room/1
+Accept: application/json
+
+###
+#获取聊天室列表
+GET http://localhost:8001/api/chat_room/chat_rooms
+Accept: application/json
+
+###
+#更新聊天室
+PATCH http://localhost:8001/api/chat_room/chat_room
+Content-Type: application/json
+
+{
+  "id": 1,
+  "categoryId": 0,
+  "specificId": 1,
+  "notice": "这是一个充满惊喜的群2",
+  "managerId": 1
+}
+
+###
+#根据id删除聊天室
+DELETE http://localhost:8001/api/chat_room/chat_room?id=2
+Accept: application/json
+
+###
+#添加聊天室
+POST http://localhost:8001/api/chat_room/chat_room
+Content-Type: application/json
+
+{
+  "id": 2,
+  "categoryId": 0,
+  "specificId": 1,
+  "notice": "测试一个群",
+  "managerId": 1
+}
+
+###
+#根据id查找评论
+GET http://localhost:8001/api/comment/comment/1
+Accept: application/json
+
+###
+#评论列表
+GET http://localhost:8001/api/comment/comments
+Accept: application/json
+
+###
+#更新评论
+PATCH http://localhost:8001/api/comment/comment
+Content-Type: application/json
+
+{
+  "id": 1,
+  "videoId": 1,
+  "moodId": 1,
+  "userId": 1,
+  "commentContent": "AMD Yes!",
+  "likeNum": 204
+}
+
+###
+#删除评论
+DELETE http://localhost:8001/api/comment/comment?id=2
+Accept: application/json
+
+###
+#添加评论
+POST http://localhost:8001/api/comment/comment
+Content-Type: application/json
+
+{
+  "videoId": 4,
+  "moodId": 1,
+  "userId": 1,
+  "commentContent": "我最爱梅西了",
+  "likeNum": 100
+}
+
+###
+#根据id查询视频
+GET http://localhost:8001/api/video/video/4
+Accept: application/json
+
+###
+#获取视频列表
+GET http://localhost:8001/api/video/videos
+Accept: application/json
+
+###
+#跟新视频
+PATCH http://localhost:8001/api/video/video
+Content-Type: application/json
+
+{
+  "id": 4,
+  "videoTitle": "震惊，西班牙排名第一的球队竟然输给一支日本球队!!!",
+  "videoLink": "https://v.qq.com/live/p/topic/109042/index.html",
+  "videoThumbnail": "C://JoinUs",
+  "videoDuration": 5400,
+  "videoDescription": "国际奇闻",
+  "videoState": 2,
+  "videoAuthor": "qyj"
+}
+
+###
+#根据id删除视频
+DELETE http://localhost:8001/api/video/video?id=1
+Accept: application/json
+
+###
+# 添加视频
+POST http://localhost:8001/api/video/video
+Content-Type: application/json
+
+{
+  "videoTitle": "震惊，西班牙排名第一的球队竟然输给一支中国球队!!!",
+  "videoLink": "https://v.qq.com/live/p/topic/109042/index.html",
+  "videoThumbnail": "C://JoinUs",
+  "videoDuration": 5400,
+  "videoDescription": "国际奇闻",
+  "videoState": 2,
+  "videoAuthor": "qyj"
+}
+
+###
 #查询角色和权限对应关系集合
 GET http://localhost:8001/api/user/role_permission
 Accept: application/json

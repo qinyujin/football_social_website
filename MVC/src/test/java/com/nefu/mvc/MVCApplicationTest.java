@@ -3,19 +3,17 @@ package com.nefu.mvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nefu.mvc.component.RedisUtil;
 import com.nefu.mvc.component.TransferJson;
-import com.nefu.mvc.entity.Permission;
-import com.nefu.mvc.entity.User;
-import com.nefu.mvc.entity.Video;
+import com.nefu.mvc.entity.*;
+import com.nefu.mvc.mapper.MoodMapper;
 import com.nefu.mvc.mapper.PermissionMapper;
 import com.nefu.mvc.mapper.RolePermissionMapper;
-import com.nefu.mvc.service.PermissionService;
-import com.nefu.mvc.service.RolePermissionService;
-import com.nefu.mvc.service.VideoService;
+import com.nefu.mvc.service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author :覃玉锦
@@ -39,6 +37,9 @@ class MVCApplicationTest {
     private RolePermissionService rolePermissionService;
 
     @Autowired
+    private ChatRoomService chatRoomService;
+
+    @Autowired
     private TransferJson transferJson;
 
     @Autowired
@@ -46,6 +47,15 @@ class MVCApplicationTest {
 
     @Autowired
     private VideoService videoService;
+
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private MoodMapper moodMapper;
+
+    @Autowired
+    private MoodService moodService;
 
     @Autowired
     private RedisUtil redisUtil;
@@ -87,7 +97,22 @@ class MVCApplicationTest {
     @Test
     void videoTest(){
         Video video = new Video();
-        video.setVideoAuthor("qyj");
+        video.setId(1);
+        video.setVideoTitle("巴萨VS皇马");
+        video.setVideoThumbnail("D://xxx");
+        video.setVideoDuration(5400);
+        video.setVideoCreated(new Date());
+        video.setVideoDescription("这是西班牙4.12日的一场国家德比");
+        video.setVideoViewTimes(1200);
+        video.setVideoState(0);
+        video.setVideoAuthor("梅西");
+        video.setVideoLink("https://v.qq.com/live/p/topic/109043/index.html");
+
+        videoService.saveVideo(video);
+//        videoService.deleteVideo(1);
+//        videoService.updateVideo(video);
+//        System.out.println(videoService.getVideos());
+//        System.out.println(videoService.getVideoById(1));
     }
 
     @Test
@@ -120,5 +145,54 @@ class MVCApplicationTest {
 //        permissionService.updatePermission(p);
         System.out.println(permissionService.getPermissions());
         System.out.println(permissionService.getPermissionById(3));
+    }
+
+    @Test
+    void commentTest(){
+        Comment comment = new Comment();
+        comment.setId(1);
+        comment.setVideoId(1);
+        comment.setMoodId(1);
+        comment.setUserId(1);
+        comment.setCommentContent("我C罗不粘锅，都是队友太垃圾了");
+        comment.setCommentTime(new Date());
+        comment.setLikeNum(2000);
+
+        commentService.saveComment(comment);
+//        commentService.deleteComment(1);
+//        commentService.updateCommet(comment);
+        System.out.println(commentService.getComments());
+        System.out.println(commentService.getCommentById(1));
+    }
+
+    @Test
+    void chatRoomTest(){
+        ChatRoom cr = new ChatRoom();
+        cr.setId(1);
+        cr.setCategoryId(0);
+        cr.setSpecificId(1);
+        cr.setNotice("这是一个充满惊喜的群");
+        cr.setManagerId(1);
+        chatRoomService.saveChatRoom(cr);
+//        chatRoomService.deleteChatRoom(1);
+//        chatRoomService.updateChatRoom(cr);
+        System.out.println(chatRoomService.getChatRooms());
+        System.out.println(chatRoomService.getChatRoomById(1));
+    }
+
+    @Test
+    void MoodTest(){
+        Mood mood = new Mood();
+        mood.setId(1);
+        mood.setContent("今天看到一个帅哥，长得很像C罗，搞得我脸红心跳的");
+        mood.setLikeCount(200);
+        mood.setReleaseTime(new Date());
+        mood.setUserId(2);
+
+        moodService.saveMood(mood);
+//        moodService.deleteMood(1);
+//        moodService.updateMood(mood);
+        System.out.println(moodService.getMoods());
+        System.out.println(moodService.getMoodById(1));
     }
 }
