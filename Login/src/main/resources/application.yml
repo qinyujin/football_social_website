@@ -10,3 +10,6 @@ spring:
         server-addr: 127.0.0.1
   application:
     name: login-server
+feign:
+  httpclient:
+    connection-timeout: 6000

@@ -18,4 +18,7 @@ public interface ActivityService {
     List<Activity> getActivities();
 
     Activity getActivityById(int id);
+
+    //根据发起者id来获取发起的活动列表
+    List<Activity> getActivitiesByUid(int uid);
 }

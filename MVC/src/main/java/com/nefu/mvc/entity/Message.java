@@ -14,6 +14,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Message {
+    //消息类型
+    public static final int TEXT = 0;
+    public static final int PICTURE = 1;
+    public static final int VOICE = 2;
+    public static final int VIDEO = 3;
+    public static final int FILE = 4;
+
     private int id;
     private int chatRoomId;
     private int userId;

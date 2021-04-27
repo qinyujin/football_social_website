@@ -12,6 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BasicInfo {
+    public static final int TEAM = 0;
+    public static final int PLAYER = 1;
+    public static final int NATION = 2;
+    public static final int STYLE = 3;
+
     private int id;
     private int categoryId;
     private int specificId;

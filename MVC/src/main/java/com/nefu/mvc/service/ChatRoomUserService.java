@@ -15,7 +15,7 @@ public interface ChatRoomUserService {
 
     int updateChatRoomUser(ChatRoomUser cru);
 
-    List<Integer> getRoomIdByUid(int id);
+    List<Integer> getRoomIdByUid(int uid);
 
-    List<Integer> getUidByRoomId(int uid);
+    List<Integer> getUidByRoomId(int rid);
 }

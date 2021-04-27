@@ -1,5 +1,7 @@
 package com.nefu.mvc.service;
 
+import com.nefu.mvc.entity.UserRole;
+
 import java.util.List;
 
 /**
@@ -8,4 +10,12 @@ import java.util.List;
  */
 public interface UserRoleService {
     List<Integer> getRidsByUid(int uid);
+
+    int saveUserRole(UserRole userRole);
+
+    int deleteUserRole(int id);
+
+    int deleteByUidAndRid(int uid,int rid);
+
+    UserRole getUserRoleByUidAndRid(int uid,int rid);
 }

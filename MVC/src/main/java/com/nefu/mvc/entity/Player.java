@@ -14,11 +14,12 @@ import lombok.NoArgsConstructor;
 public class Player {
     private int id;
     //球员编号
-    private int playerId;
+    private int playerNum;
     private String playerName;
     private int nationId;
     private int teamId;
     private double height;
+    //单位kg
     private double weight;
     private int age;
     //球衣号码

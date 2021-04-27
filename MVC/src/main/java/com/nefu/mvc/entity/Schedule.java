@@ -1,10 +1,12 @@
 package com.nefu.mvc.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author :覃玉锦
@@ -17,9 +19,10 @@ import java.util.Date;
 public class Schedule {
     private int id;
     //当天时间，例如17:40
-    private Date currentTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private LocalDateTime matchTime;
     //日期，例如2021/4/8
-    private Date currentDate;
+    private LocalDate matchDate;
     //联赛名称，例如西甲
     private String leagueName;
     //主队名

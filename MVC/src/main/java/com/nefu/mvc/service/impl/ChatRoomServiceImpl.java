@@ -5,7 +5,9 @@ import com.nefu.mvc.entity.ChatRoom;
 import com.nefu.mvc.mapper.ChatRoomMapper;
 import com.nefu.mvc.service.ChatRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,6 +22,9 @@ public class ChatRoomServiceImpl implements ChatRoomService {
 
     @Override
     public int saveChatRoom(ChatRoom cr) {
+        //通过群聊名称来保证不会重复创建群
+        ChatRoom chatRoom = getChatRoomByName(cr.getName());
+        if(chatRoom != null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"该群已存在，请勿重复创建群聊");
         return chatRoomMapper.insert(cr);
     }
 
@@ -41,5 +46,10 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     @Override
     public ChatRoom getChatRoomById(int id) {
         return chatRoomMapper.selectById(id);
+    }
+
+    @Override
+    public ChatRoom getChatRoomByName(String name) {
+        return chatRoomMapper.getChatRoomByName(name);
     }
 }

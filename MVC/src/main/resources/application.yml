@@ -2,6 +2,9 @@ privateKey: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAI+ud9zHMU6QcuhiFswB
 publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCPrnfcxzFOkHLoYhbMAbwP2GDiD30Nanko4Wc329Vs6Ot6wQI7+pYqY32GPun7SgvM6H3CwSujlWLZCtbT4MJpCeDKFGPoWNrfkD8hgiaIKRaiJFEs3rM7vzOF5X9lhUCXQeZvn0Fd3wIUIvdVYs/B/ObBkLGRH68iv0FLg1GJxQIDAQAB
 
 spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   cloud:
     nacos:
       discovery:

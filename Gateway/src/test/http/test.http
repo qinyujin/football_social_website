@@ -1,7 +1,649 @@
-#根据uid查询rids
-GET http://localhost:8003/api/user/rids/3
+#设置用户角色
+POST http://localhost:8003/api/user/user/role
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "roleId": 3
+}
+
+
+###
+#根据uid和rid共同删除用户角色
+DELETE http://localhost:8003/api/user/user/role?uid=1&rid=222
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
 Accept: application/json
-authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJZQXRFZ0VpNnBQdy9YalV2NU1xTTlSNnhKM3g0VGpXeG5BMTNRS0ZiUDVGN1M5OWlOTkV0dnVwS1lUcCtGN2VkZXZmZVk0ZXRMSTdKQmhMNEpmQWN1RlJDZXozc1FaRDg1UjV2RXVSa0lrYnV6M1hwNVQweS9MSVVtVTJ4Z3JuT29Xa1VnTjZ3TE15aWt2ckpobWp0TkZIN0k3TGczSVN2RE5mUUlwdVRtVk09IiwiZXhwIjoxNjE4MTk5NDU4LCJpYXQiOjE2MTgxOTIyNTh9.i0yczJwyR3wllRP6UFbHr5Oo7o-k6gUiruK1MJwSsh0
+
+###
+#根据id来查询角色
+GET http://localhost:8003/api/user/role/3
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+Accept: application/json
+
+###
+#查询角色列表
+GET http://localhost:8003/api/user/roles
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+Accept: application/json
+
+###
+#根据id删除角色
+DELETE http://localhost:8003/api/user/role?id=4
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+Accept: application/json
+
+###
+#添加角色
+POST http://localhost:8003/api/user/role
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+Content-Type: application/json
+
+{
+  "name": "家庭教师"
+}
+
+###
+#聊天室发送文件
+POST http://localhost:8003/api/chat_room/file
+Content-Type: application/json
+
+{
+  "chatRoomId": 1,
+  "userId": 3,
+  "createTime": "2021-04-21 15:10:30",
+  "filePath": "D:\\Idea\\ideaWorkplace\\football_social_website\\qyj.jpg",
+  "fileName": "qyj.jpg"
+}
+
+###
+#根据id获取基础信息
+GET http://localhost:8003/api/basic_info/basic_info/3
+Accept: application/json
+
+###
+#获取基础信息列表
+GET http://localhost:8003/api/basic_info/basic_infos
+Accept: application/json
+
+###
+#更新基础信息
+PATCH http://localhost:8003/api/basic_info/basic_info
+Content-Type: application/json
+
+{
+  "id": 3,
+  "categoryId": 555
+}
+
+###
+#根据id删除基础信息
+DELETE http://localhost:8003/api/basic_info/basic_info?id=4
+Accept: application/json
+
+###
+#添加基础信息
+POST http://localhost:8003/api/basic_info/basic_info
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "specificId": 2
+}
+
+###
+#根据id获取风格
+GET http://localhost:8003/api/basic_info/style/3
+Accept: application/json
+
+###
+#获取风格列表
+GET http://localhost:8003/api/basic_info/styles
+Accept: application/json
+
+###
+#更新风格
+PATCH http://localhost:8003/api/basic_info/style
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "kkk"
+}
+
+###
+#根据id删除风格
+DELETE http://localhost:8003/api/basic_info/style?id=23
+Accept: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
+
+###
+#添加风格
+POST http://localhost:8003/api/basic_info/style
+Content-Type: application/json
+
+{
+  "name": "防守反击",
+  "description": "注重防守，获取到球权之后靠速度反击进攻",
+  "typicalTeam": "皇家马德里"
+}
+
+###
+#根据id查询国家
+GET http://localhost:8003/api/basic_info/nation/3
+Accept: application/json
+
+###
+#获取国家列表
+GET http://localhost:8003/api/basic_info/nations
+Accept: application/json
+
+###
+#更新国家
+PATCH http://localhost:8003/api/basic_info/nation
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "巴西"
+}
+
+###
+#根据id删除国家
+DELETE http://localhost:8003/api/basic_info/nation?id=4
+Accept: application/json
+
+###
+#添加国家
+POST http://localhost:8003/api/basic_info/nation
+Content-Type: application/json
+
+{
+  "name": "美国"
+}
+
+###
+#根据id查询球员
+GET http://localhost:8003/api/basic_info/player/3
+Accept: application/json
+
+###
+#获取球员列表
+GET http://localhost:8003/api/basic_info/players
+Accept: application/json
+
+###
+#更新球员信息
+PATCH http://localhost:8003/api/basic_info/player
+Content-Type: application/json
+
+{
+  "id": 2,
+  "playerName": "阿凡达"
+}
+
+###
+#根据id删除球员
+DELETE http://localhost:8003/api/basic_info/player?id=3
+Accept: application/json
+
+###
+#添加球员
+POST http://localhost:8003/api/basic_info/player
+Content-Type: application/json
+
+{
+  "playerNum": 2,
+  "playerName": "郝海东",
+  "nationId": 1,
+  "teamId": 1,
+  "height": 185.5,
+  "weight": 72.2,
+  "age": 28,
+  "num": 10,
+  "position": "前锋",
+  "history": "中超最佳射手"
+}
+
+###
+#根据id获取队伍
+GET http://localhost:8003/api/basic_info/team/2
+Accept: application/json
+
+###
+#获取队伍列表
+GET http://localhost:8003/api/basic_info/teams
+Accept: application/json
+
+###
+#更新队伍
+PATCH http://localhost:8003/api/basic_info/team
+Content-Type: application/json
+
+{
+  "id": 4,
+  "teamName": "韩国队"
+}
+
+###
+#根据id删除队伍
+DELETE http://localhost:8003/api/basic_info/team?id=2
+Accept: application/json
+
+###
+#添加队伍
+POST http://localhost:8003/api/basic_info/team
+Content-Type: application/json
+
+{
+  "teamNum": 2,
+  "teamName": "日本队",
+  "nationId": 2,
+  "createTime": "1921-01-03",
+  "teamSize": 20,
+  "headCoachId": 2
+}
+
+###
+#根据活动id查询用户
+GET http://localhost:8003/api/meet/user/activity/1
+Accept: application/json
+
+###
+#根据uid查询参加的活动
+GET http://localhost:8003/api/meet/activity/user/2
+Accept: application/json
+
+###
+#更新活动用户
+PATCH http://localhost:8003/api/meet/activity/user
+Content-Type: application/json
+
+{
+  "id": 2,
+  "activityId": 1,
+  "userId": 2
+}
+
+###
+#根据id删除活动用户关系
+DELETE http://localhost:8003/api/meet/activity/user?id=3
+Accept: application/json
+
+###
+#添加活动用户
+POST http://localhost:8003/api/meet/activity/user
+Content-Type: application/json
+
+{
+  "activityId": 1,
+  "userId": 2
+}
+
+###
+#根据发起者id来查询活动
+GET http://localhost:8003/api/meet/activity/2
+Accept: application/json
+
+###
+#查询活动列表
+GET http://localhost:8003/api/meet/activities
+Accept: application/json
+
+###
+#更新活动
+PATCH http://localhost:8003/api/meet/activity
+Content-Type: application/json
+
+{
+  "id": 1,
+  "limitCount": 14,
+  "sponsorId": 2,
+  "notice": "在东北大学集合"
+}
+
+###
+#删除活动
+DELETE http://localhost:8003/api/meet/activity?id=1
+Accept: application/json
+
+###
+#添加活动
+POST http://localhost:8003/api/meet/activity
+Content-Type: application/json
+
+{
+  "id": 1,
+  "geoId": 1,
+  "startTime": "2021-04-20 15:22:40",
+  "endTime": "2021-04-20 15:25:30",
+  "sponsorId": 1,
+  "limitCount": 12,
+  "notice": "在东北林业大学操场集合，自带水。"
+}
+
+###
+#根据id获取位置
+GET http://localhost:8003/api/meet/location/2
+Accept: application/json
+
+###
+#获取位置列表
+GET http://localhost:8003/api/meet/locations
+Accept: application/json
+
+###
+#更新位置
+PATCH http://localhost:8003/api/meet/location
+Content-Type: application/json
+
+{
+  "id": 1,
+  "geoNote": "东林"
+}
+
+###
+#删除位置
+DELETE http://localhost:8003/api/meet/location?id=3
+Accept: application/json
+
+###
+#添加位置
+POST http://localhost:8003/api/meet/location
+Content-Type: application/json
+
+{
+  "geoType": "政治地理位置",
+  "latitude": "126.638184",
+  "longitude": "45.720741",
+  "geoNote": "东北林业大学，是全国林业专业排行榜前几的大学，同时是一所211双一流综合性大学。欢饮大家报考"
+}
+
+###
+PATCH http://localhost:8003/api/user/friends
+Content-Type: application/json
+
+{
+  "friends": {
+    "useraId": 1,
+    "userbId": 2
+  }
+}
+
+###
+#删除好友
+DELETE http://localhost:8003/api/user/friends?ida=1&idb=2
+Accept: application/json
+
+###
+#添加好友
+POST http://localhost:8003/api/user/friends
+Content-Type: application/json
+
+{
+  "useraId": 1,
+  "userbId": 2
+}
+
+###
+#用户退出群聊
+DELETE http://localhost:8003/api/chat_room/user?id=2
+Accept: application/json
+
+###
+#用户撤回消息
+DELETE http://localhost:8003/api/chat_room/message?id=8
+Accept: application/json
+
+###
+#用户发送信息到群中
+POST http://localhost:8003/api/chat_room/message
+Content-Type: application/json
+
+{
+  "chatRoomId": 1,
+  "userId": 3,
+  "messageType": 1,
+  "sendTime": "2021-04-21 14:36:40"
+}
+
+###
+#用户加入群聊
+POST http://localhost:8003/api/chat_room/user
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "roomId": 2
+}
+
+###
+#根据id查看赛程
+GET http://localhost:8003/api/schedule/schedule/3
+Accept: application/json
+
+###
+#查看赛程列表
+GET http://localhost:8003/api/schedule/schedules
+Accept: application/json
+
+###
+#更新赛程
+PATCH http://localhost:8003/api/schedule/schedule
+Content-Type: application/json
+
+{
+  "id": 3,
+  "currentHomeTeamScore": 1,
+  "currentVisitorTeamScore": 2
+}
+
+###
+#根据id删除赛程
+DELETE http://localhost:8003/api/schedule/schedule?id=2
+Accept: application/json
+
+###
+#添加赛程
+POST http://localhost:8003/api/schedule/schedule
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJld0drN09qZ01pb24wTUtIT3NIUHZIaTRXVThLeDJOd05aeVExaUxFTTFvZlhvNlJSd0wrYm53K0ZpWStUT3lEaU9FQXQzTFpIUjQvQUIvTDJsR3dOR3BUYkVOYUNsZEVGNVlNNWxYUUpORzU4WG9ETnN3anJLRmlMWmdSV2FJL2pPenNJM1kwQ0ltTEpjQStMMnJ3VDVGVEorZDhka2QwSkprRkRFWEZWZVU9IiwiZXhwIjoxNjE5MDAwMTQxLCJpYXQiOjE2MTg5OTI5NDF9.G49Lkvnr-xETNVgSPyhxMZfsd7pM6avRMRzmthc65vI
+
+{
+  "matchTime": "2021-04-20 18:00:00",
+  "matchDate": "2021-04-20",
+  "leagueName": "中超",
+  "homeTeamName": "广州恒大",
+  "visitorTeamName": "广州南"
+}
+
+###
+#根据id查看动态
+GET http://localhost:8003/api/mood/mood/1
+Accept: application/json
+
+###
+#查看动态列表
+GET http://localhost:8003/api/mood/moods
+Accept: application/json
+
+###
+#更新动态
+PATCH http://localhost:8003/api/mood/mood
+Content-Type: application/json
+
+{
+  "id": 1,
+  "userId": 2,
+  "content": "今天看到一个帅哥，长得很像C罗，搞得我脸红心跳的   测试",
+  "likeCount": 201
+}
+
+###
+#根据id删除动态
+DELETE http://localhost:8003/api/mood/mood?id=2
+Accept: application/json
+
+###
+#添加动态
+POST http://localhost:8003/api/mood/mood
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "content": "我不喜欢写傻逼代码",
+  "likeCount": 2000
+}
+
+###
+#根据id查找聊天室
+GET http://localhost:8003/api/chat_room/chat_room/1
+Accept: application/json
+
+###
+#获取聊天室列表
+GET http://localhost:8003/api/chat_room/chat_rooms
+Accept: application/json
+
+###
+#更新聊天室
+PATCH http://localhost:8003/api/chat_room/chat_room
+Content-Type: application/json
+
+{
+  "id": 1,
+  "categoryId": 0,
+  "specificId": 1,
+  "notice": "这是一个充满惊喜的群2",
+  "managerId": 1
+}
+
+###
+#根据id删除聊天室
+DELETE http://localhost:8003/api/chat_room/chat_room?id=2
+Accept: application/json
+
+###
+#添加聊天室
+POST http://localhost:8003/api/chat_room/chat_room
+Content-Type: application/json
+
+{
+  "id": 2,
+  "categoryId": 0,
+  "specificId": 1,
+  "notice": "测试一个群",
+  "managerId": 1
+}
+
+###
+#根据id查找评论
+GET http://localhost:8003/api/comment/comment/1
+Accept: application/json
+
+###
+#评论列表
+GET http://localhost:8003/api/comment/comments
+Accept: application/json
+
+###
+#更新评论
+PATCH http://localhost:8003/api/comment/comment
+Content-Type: application/json
+
+{
+  "id": 1,
+  "videoId": 1,
+  "moodId": 1,
+  "userId": 1,
+  "commentContent": "AMD Yes!",
+  "likeNum": 204
+}
+
+###
+#删除评论
+DELETE http://localhost:8003/api/comment/comment?id=2
+Accept: application/json
+
+###
+#添加评论
+POST http://localhost:8003/api/comment/comment
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJld0drN09qZ01pb24wTUtIT3NIUHZIaTRXVThLeDJOd05aeVExaUxFTTFvZlhvNlJSd0wrYm53K0ZpWStUT3lEaU9FQXQzTFpIUjQvQUIvTDJsR3dOR3BUYkVOYUNsZEVGNVlNNWxYUUpORzU4WG9ETnN3anJLRmlMWmdSV2FJL2pPenNJM1kwQ0ltTEpjQStMMnJ3VDVGVEorZDhka2QwSkprRkRFWEZWZVU9IiwiZXhwIjoxNjE5MDAwMTQxLCJpYXQiOjE2MTg5OTI5NDF9.G49Lkvnr-xETNVgSPyhxMZfsd7pM6avRMRzmthc65vI
+
+{
+  "videoId": 3,
+  "commenterId": 1,
+  "commentContent": "本次比赛广州队的发挥可圈可点，值得点赞!"
+}
+
+###
+#根据id查询视频
+GET http://localhost:8003/api/video/video/4
+Accept: application/json
+
+###
+#获取视频列表
+GET http://localhost:8003/api/video/videos
+Accept: application/json
+
+###
+#更新视频
+PATCH http://localhost:8003/api/video/video
+Content-Type: application/json
+
+{
+  "id": 4,
+  "videoTitle": "震惊，西班牙排名第一的球队竟然输给一支日本球队!!!",
+  "videoLink": "https://v.qq.com/live/p/topic/109042/index.html",
+  "videoThumbnail": "C://JoinUs",
+  "videoDuration": 5400,
+  "videoDescription": "国际奇闻",
+  "videoState": 2,
+  "videoAuthor": "qyj"
+}
+
+###
+#根据id删除视频
+DELETE http://localhost:8003/api/video/video?id=1
+Accept: application/json
+
+###
+# 添加视频
+POST http://localhost:8003/api/video/video
+Content-Type: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJld0drN09qZ01pb24wTUtIT3NIUHZIaTRXVThLeDJOd05aeVExaUxFTTFvZlhvNlJSd0wrYm53K0ZpWStUT3lEaU9FQXQzTFpIUjQvQUIvTDJsR3dOR3BUYkVOYUNsZEVGNVlNNWxYUUpORzU4WG9ETnN3anJLRmlMWmdSV2FJL2pPenNJM1kwQ0ltTEpjQStMMnJ3VDVGVEorZDhka2QwSkprRkRFWEZWZVU9IiwiZXhwIjoxNjE5MDAwMTQxLCJpYXQiOjE2MTg5OTI5NDF9.G49Lkvnr-xETNVgSPyhxMZfsd7pM6avRMRzmthc65vI
+
+{
+  "videoTitle": "广州队vs广州城比赛集锦",
+  "videoLink": "https://v.qq.com/live/p/topic/109042/index.html",
+  "videoThumbnail": "C://JoinUs",
+  "videoDuration": 5400,
+  "videoCreated": "2021-04-21 16:27:00",
+  "videoDescription": "中超开头比赛，希望广州的两支队伍给我们带来精彩的体验",
+  "videoViewTimes": 1000,
+  "videoState": 2,
+  "videoAuthor": "qyj",
+  "signalLink": "腾讯体育",
+  "scheduleId": 2
+}
+
+###
+#查询角色和权限对应关系集合
+GET http://localhost:8003/api/user/role_permission
+Accept: application/json
+
+###
+#查询所有权限
+GET http://localhost:8003/api/user/permissions
+Accept: application/json
+Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJDZll1d2pCeHJlWm52RXZrZkw0UTA0WDVjeWFoaHdMaWhYTHVKZnBTR1FxNUVjTVV3eXdwZkVJZUovNnRNbkw1dUF2d09jU0FtcXR2dWwzMGpMRnIvTlV3SlJqMk4zMFE4V3huelJKUURjd1NnTnV1SUJHb3lWbTdHYnEwZ1NzZjdJRitpM1pMalBYajNhNEVBQXZqQTlOMkppZ2VZODBYZUhzWXRPcTVvanM9IiwiZXhwIjoxNjE4NDg1MzY3LCJpYXQiOjE2MTg0NzgxNjd9.tVzTauJv7u2OwycCH80K_H8LPV1Q-k5n35RaTz96vtg
+
+###
+#根据uid查询rids
+GET http://localhost:8003/api/user/rids/1
+Accept: application/json
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
 
 ###
 # 根据账号查询用户
@@ -19,7 +661,7 @@ authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJZQXRFZ0VpNnBQdy9Y
 #查询所有用户
 GET http://localhost:8003/api/user/users
 Accept: application/json
-authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJYZXhzRWhpMVRDVno5cUgxYjZaUDF6VTBteHV1RUhVTG9pamNCZFhqWEZRa29heFJXWDV0WHN6UkJvMkRlMjk0d2Z6Q0hzZzNxdlpDc0t1ME5NTFFrODl2WDg0aE9HMHNBT1pQak5hakMxU0g5SCszdk9Fd3BsR0VQRXo1SU43dStsR2oxSDBEVjFNSmNkWXhaMVlOUzNEVjdtOEJ0S0p6TDdvT084Y2k5NVk9IiwiZXhwIjoxNjE4MjExOTQyLCJpYXQiOjE2MTgyMDQ3NDJ9.K3QRoIiFycLHv7p_GTj_JhTCAfpMOpF-0ZG7q59XVKk
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJYbHVDWUZhR0dvaUhOTUM0K3NUc1Q2TFJaSmRqbHJpdHdjQzcxWkpybWF0MnFTOGF3aVJOdnRFcVkvcDNOeGE0cWVsMUl6ZThOUlk0cmlHYk9NYzNDeDU1aURvWTJqTk9BVTEvcWRYUXExQnM4Y3ZOWEN6b3hqWEo0UC9TbHJiaFdaVDZMYWJmdHVyNlcvaitZY0xLT1RXNzVZdU9hYmwyRUF6NDVsR0QzK1E9IiwiZXhwIjoxNjE5NTIzMTg4LCJpYXQiOjE2MTk1MTU5ODh9.yJBTPbDAyhesekfbfk_N13DFJ-D5bQSpm1pzZKUARis
 
 ###
 #更新用户，需要传入id
@@ -37,9 +679,9 @@ authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJZQXRFZ0VpNnBQdy9Y
 
 ###
 #删除用户
-DELETE http://localhost:8003/api/user/user?id=2
+DELETE http://localhost:8003/api/user/user?id=23
 Accept: application/json
-authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJZQXRFZ0VpNnBQdy9YalV2NU1xTTlSNnhKM3g0VGpXeG5BMTNRS0ZiUDVGN1M5OWlOTkV0dnVwS1lUcCtGN2VkZXZmZVk0ZXRMSTdKQmhMNEpmQWN1RlJDZXozc1FaRDg1UjV2RXVSa0lrYnV6M1hwNVQweS9MSVVtVTJ4Z3JuT29Xa1VnTjZ3TE15aWt2ckpobWp0TkZIN0k3TGczSVN2RE5mUUlwdVRtVk09IiwiZXhwIjoxNjE4MTk5NDU4LCJpYXQiOjE2MTgxOTIyNTh9.i0yczJwyR3wllRP6UFbHr5Oo7o-k6gUiruK1MJwSsh0
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJOMXlqc0V4RDJxWVpOam4wM0U5T3kwb3lsSllsUi9xM0lFWVdZRFNDNTlmTkh1bE5UemJnVnRKbGZQdDVvajhOa0FrcVlYTHhaMFNnTmczNlVRVmpaZVZxWXdPejBVaDlET3RwKzRmY0hCWG9tS1M0eElzMnhJaFJodU1nL0J2S1AwVGRqKytMMTVPYzhJQTdaTlZHeFVEd1ZqSkY1R2dZdXlXVjF2QmNoek09IiwiZXhwIjoxNjE5NTMwODg0LCJpYXQiOjE2MTk1MjM2ODR9.N2HlVJMJnspv-RC8Zcf-tT2aOdxJFLBklHvi-K8YGQQ
 
 ###
 #添加用户
@@ -58,12 +700,31 @@ authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJZQXRFZ0VpNnBQdy9Y
 #token续期
 GET http://localhost:8003/api/renew
 Accept: application/json
-authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJYZXhzRWhpMVRDVno5cUgxYjZaUDF6VTBteHV1RUhVTG9pamNCZFhqWEZRa29heFJXWDV0WHN6UkJvMkRlMjk0d2Z6Q0hzZzNxdlpDc0t1ME5NTFFrODl2WDg0aE9HMHNBT1pQak5hakMxU0g5SCszdk9Fd3BsR0VQRXo1SU43dStsR2oxSDBEVjFNSmNkWXhaMVlOUzNEVjdtOEJ0S0p6TDdvT084Y2k5NVk9IiwiZXhwIjoxNjE4MjExMTE2LCJpYXQiOjE2MTgyMDM5MTZ9.I8PyqqnJLok2o0J0oEXiBFpKUgIKN7_2_5NYcW053Zg
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJld0drN09qZ01pb24wTUtIT3NIUHZIaTRXVThLeDJOd05aeVExaUxFTTFvZlhvNlJSd0wrYm53K0ZpWStUT3lEaU9FQXQzTFpIUjQvQUIvTDJsR3dOR3BUYkVOYUNsZEVGNVlNNWxYUUpORzU4WG9ETnN3anJLRmlMWmdSV2FJL2pPenNJM1kwQ0ltTEpjQStMMnJ3VDVGVEorZDhka2QwSkprRkRFWEZWZVU9IiwiZXhwIjoxNjE5MDAwMTQxLCJpYXQiOjE2MTg5OTI5NDF9.G49Lkvnr-xETNVgSPyhxMZfsd7pM6avRMRzmthc65vI
 
 
 ###
+#获取用户信息
+GET http://localhost:8003/api/user/info
+Accept: application/json
+authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJMQkZKVWVCdlpIRDBxU2o4RGdWSjZZU3F1NlY4aHQzVzdSQWErTGsvTTJSK3EyWCtBRDc0SnJXZCtDTE5WNnJqa2p0TmtJQmI2T1VpNGhnMXF2cGk5b2dQbXB0MTEwOGg0dFcvdU9Zd1NtSmY2bjRmRVNVMnc4Z3o4T0dQU2J6dHFKTXBSUEthZnFxb0tueEhIYjRwTFYrV0x5bUo3VnRuZDYyVDRFdkkvVFE9IiwiZXhwIjoxNjE5NTAxNjAwLCJpYXQiOjE2MTk0OTQ0MDB9.3UxVNdvPLOxCKTQvYkwXuaFBw0DBe_5jFKkjoAlyZE8
+uid: 2
+
+
+###
+#注册
+POST http://localhost:8003/api/register
+Content-Type: application/json
+
+{
+  "name": "小绿",
+  "num": "1000",
+  "password": 123456
+}
+
+###
 #登陆
-POST http://localhost:8003/api/login?verifyCode=R9QY
+POST http://localhost:8003/api/login?verifyCode=WUQN
 Content-Type: application/json
 
 {
@@ -73,5 +734,5 @@ Content-Type: application/json
 
 ###
 #验证码
-GET http://localhost:8003/api/verifyCode?timestamp=1618204674676
+GET http://localhost:8003/api/verifyCode?timestamp=1618993016682
 Accept: application/json

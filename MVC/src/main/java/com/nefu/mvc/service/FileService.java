@@ -1,6 +1,6 @@
 package com.nefu.mvc.service;
 
-import com.nefu.mvc.entity.File;
+import com.nefu.mvc.entity.MyFile;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import java.util.List;
  * @create :2021-04-09 19:19:00
  */
 public interface FileService {
-    int saveFile(File f);
+    int saveFile(MyFile f);
 
     int deleteFile(int id);
 
-    int updateFile(File f);
+    int updateFile(MyFile f);
 
-    List<File> getFiles();
+    List<MyFile> getFiles();
 
-    File getFileById(int id);
+    MyFile getFileById(int id);
 }

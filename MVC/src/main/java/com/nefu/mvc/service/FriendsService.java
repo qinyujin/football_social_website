@@ -11,7 +11,9 @@ import java.util.List;
 public interface FriendsService {
     int saveFriends(Friends f);
 
-    int deleteFriends(int id);
+    int deleteFriends(Friends friends);
+
+    int dealBlacklist(Friends friends);
 
     int updateFriends(Friends f);
 

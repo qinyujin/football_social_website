@@ -12,6 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location {
+    //自然地理位置
+    public static final String PHYSICAL_GEOGRAPHY = "自然地理位置";
+    //经济地理位置
+    public static final String ECONOMIC_GEOGRAPHY = "经济地理位置";
+    //政治地理位置
+    public static final String POLITICAL_GEOGRAPHY = "政治地理位置";
+
     private int id;
     private String geoType;
     //纬度

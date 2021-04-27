@@ -1,10 +1,9 @@
 package com.nefu.login.feign;
 
 import com.nefu.login.component.CommonResult;
+import com.nefu.login.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author :覃玉锦
@@ -17,4 +16,7 @@ public interface ConsumerFeignClient {
 
     @GetMapping("/api/user/rids/{uid}")
     CommonResult getRidsByUid(@PathVariable("uid") int uid);
+
+    @PostMapping("/api/user/user")
+    CommonResult saveUser(@RequestBody User user);
 }

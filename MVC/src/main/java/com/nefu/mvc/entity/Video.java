@@ -27,4 +27,8 @@ public class Video {
     //0表示预约 1表示直播 2表示录播
     private int videoState;
     private String videoAuthor;
+    //信号源
+    private String signalLink;
+    //所属赛程id
+    private int scheduleId;
 }

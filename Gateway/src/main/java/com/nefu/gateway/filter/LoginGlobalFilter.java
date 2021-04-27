@@ -20,6 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -33,6 +34,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
+@CrossOrigin
 public class LoginGlobalFilter implements GlobalFilter, Ordered {
     @Autowired
     private ObjectMapper objectMapper;
@@ -50,6 +52,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         whiteList.add("/api/verifyCode");
         whiteList.add("/api/login");
         whiteList.add("/api/renew");
+        whiteList.add("/api/register");
         return whiteList;
     }
 

@@ -70,11 +70,14 @@ public class LoginController {
         if (!passVerify) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "验证码错误或者过期，请重试！");
         }
-        User u = (User) transferJson.transferToClz(consumerFeignClient.getUserByNum(user.getNum()).getData().toString(), User.class);
-        if (u == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "用户不存在，请重试");
+        CommonResult obj = consumerFeignClient.getUserByNum(user.getNum());
+        if(obj.getCode()==401)throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"用户不存在，请重试");
+        User u = (User) transferJson.transferToClz(obj.getData().toString(), User.class);
         try {
             String realPwd = RSAUtil.decrypt(u.getPassword(), privateKey);
             //通过把用户的token封装到jwt中来实现登陆状态的认证
+            CommonResult res = consumerFeignClient.getRidsByUid(u.getId());
+            if(res.getCode() == 401) return new CommonResult(401,"该用户暂未有角色，请联系管理员");
             List<Integer> rids = (List<Integer>) transferJson.transferToClz(consumerFeignClient.getRidsByUid(u.getId()).getData().toString()
                     , List.class);
             MyToken t = new MyToken(u.getId(), rids);
@@ -86,13 +89,11 @@ public class LoginController {
                     //签发时间
                     .withIssuedAt(new Date())
                     //设置token两小时过期
-//                    .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 120))
-
-                    //测试jwt刷新，过期时间设置为1分钟
                     .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 120))
                     //传输的内容
                     .withAudience(secreteJson)
                     .sign(Algorithm.HMAC256(publicKey));
+            log.info("登陆成功，即将返回");
             if (realPwd.equals(user.getPassword())) return new CommonResult(200, "登陆成功，返回token", token);
         } catch (Exception e) {
             e.printStackTrace();

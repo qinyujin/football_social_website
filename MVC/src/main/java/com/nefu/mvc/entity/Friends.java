@@ -12,9 +12,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Friends {
+    public static final int USER_A_BEEN_SHIELD = 1;
+    public static final int BOTH_BEEN_SHIELD = 2;
+
     private int id;
     private int useraId;
     private int userbId;
-    //0正常 1a被拉黑 2b被拉黑 3都被拉黑
-    private int state;
+    //0正常 1b被a拉黑 2都被拉黑
+    private int state = 0;
 }

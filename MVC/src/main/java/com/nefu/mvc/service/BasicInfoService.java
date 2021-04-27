@@ -18,4 +18,6 @@ public interface BasicInfoService {
     List<BasicInfo> getBasicInfos();
 
     BasicInfo getBasicInfoById(int id);
+
+    List<Integer> getCidsBySid(int sid);
 }

@@ -13,12 +13,13 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class File {
+public class MyFile {
     private int id;
     private int chatRoomId;
     private int userId;
     private Date createTime;
     private String filePath;
     private String fileName;
-    private int managerId;
+    //是否属于用户上传的文件
+    public boolean isUpload;
 }

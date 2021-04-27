@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @author :覃玉锦
@@ -18,11 +18,11 @@ public class Team {
     private int teamNum;
     private String teamName;
     private int nationId;
-    private char group;
+    private char matchGroup;
     //成立时间
-    private Date createTime;
+    private LocalDate createTime;
     private int teamSize;
     //主教练编号
-    private String headCoachId;
+    private int headCoachId;
     private String honor;
 }

@@ -15,6 +15,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.RequestPath;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -39,6 +40,7 @@ import java.util.Map;
  */
 @Component
 @Slf4j
+@CrossOrigin
 public class PermissionGlobalFilter implements GlobalFilter, Ordered {
 
     @Autowired
@@ -69,6 +71,8 @@ public class PermissionGlobalFilter implements GlobalFilter, Ordered {
         whiteList.add("/api/verifyCode");
         whiteList.add("/api/login");
         whiteList.add("/api/renew");
+        whiteList.add("/api/register");
+        whiteList.add("/api/user/info");
         return whiteList;
     }
 
@@ -102,6 +106,9 @@ public class PermissionGlobalFilter implements GlobalFilter, Ordered {
         log.info("rids:"+rids.get(0));
         //用户对应角色id集,由于远端访问数据库会产生延迟，所以最好减少数据库访问次数
         List<Integer> ridList = objectMapper.readValue(rids.get(0), List.class);
+
+        //如果是管理员，那么拥有所有的权限
+        if(ridList.contains(1))return chain.filter(exchange);
 
         //这里通过redis缓存来进行取值，redis数据结构选型和设计：
         //1、都选用list结构。2、role_permission的key是角色id，然后value是pids

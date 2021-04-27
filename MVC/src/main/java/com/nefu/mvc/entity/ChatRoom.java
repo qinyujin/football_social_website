@@ -13,10 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ChatRoom {
     private int id;
-    //种类id，例如球队、国家
-    private int categoryId;
-    //具体id，从种类中选取实例时使用，例如国家的实例有巴西队
-    private int specificId;
+    private String name;
+    //通过basicInfo表来查询到具体的categoryid和specificid
+    private int basicInfoId;
     //公告
     private String notice;
     //群主id

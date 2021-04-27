@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -14,10 +15,17 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Comment {
+    public static final int LEVEL_ONE = 1;
+    public static final int LEVEL_TWO = 2;
+
     private int id;
     private int videoId;
     private int moodId;
-    private int userId;
+    @NotNull
+    private int commenterId;
+    private int replyId;
+    //总共两级评论
+    private int level;
     //评论内容
     private String commentContent;
     //评论时间

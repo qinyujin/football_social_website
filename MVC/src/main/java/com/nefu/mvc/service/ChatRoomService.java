@@ -18,4 +18,6 @@ public interface ChatRoomService {
     List<ChatRoom> getChatRooms();
 
     ChatRoom getChatRoomById(int id);
+
+    ChatRoom getChatRoomByName(String name);
 }

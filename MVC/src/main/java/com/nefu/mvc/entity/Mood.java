@@ -14,11 +14,17 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Mood {
+    public static final int TEXT = 0;
+    public static final int AUDIO = 1;
+    public static final int VIDEO = 2;
+    public static final int PICTURE = 3;
+
     private int id;
     private int userId;
     //动态发布时间
     private Date releaseTime;
-    private String content;
+    private byte[] content;
+    private int contentType;
     //动态点赞数
     private int likeCount;
 }

@@ -1,7 +1,511 @@
+#设置用户角色
+POST http://localhost:8001/api/user/user/role
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "roleId": 3
+}
+
+###
+#根据uid和rid共同删除用户角色
+DELETE http://localhost:8001/api/user/user/role?uid=32&rid=2
+Accept: application/json
+
+###
+#根据id来查询角色
+GET http://localhost:8001/api/user/role/3
+Accept: application/json
+
+###
+#查询角色列表
+GET http://localhost:8001/api/user/roles
+Accept: application/json
+
+###
+#根据id删除角色
+DELETE http://localhost:8001/api/user/role?id=4
+Accept: application/json
+
+###
+#添加角色
+POST http://localhost:8001/api/user/role
+Content-Type: application/json
+
+{
+  "name": "家庭教师"
+}
+
+###
+#聊天室发送文件
+POST http://localhost:8001/api/chat_room/file
+Content-Type: application/json
+
+{
+  "chatRoomId": 1,
+  "userId": 3,
+  "createTime": "2021-04-21 15:10:30",
+  "filePath": "D:\\Idea\\ideaWorkplace\\football_social_website\\qyj.jpg",
+  "fileName": "qyj.jpg"
+}
+
+###
+#根据id获取基础信息
+GET http://localhost:8001/api/basic_info/basic_info/3
+Accept: application/json
+
+###
+#获取基础信息列表
+GET http://localhost:8001/api/basic_info/basic_infos
+Accept: application/json
+
+###
+#更新基础信息
+PATCH http://localhost:8001/api/basic_info/basic_info
+Content-Type: application/json
+
+{
+  "id": 3,
+  "categoryId": 555
+}
+
+###
+#根据id删除基础信息
+DELETE http://localhost:8001/api/basic_info/basic_info?id=4
+Accept: application/json
+
+###
+#添加基础信息
+POST http://localhost:8001/api/basic_info/basic_info
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "specificId": 2
+}
+
+###
+#根据id获取风格
+GET http://localhost:8001/api/basic_info/style/3
+Accept: application/json
+
+###
+#获取风格列表
+GET http://localhost:8001/api/basic_info/styles
+Accept: application/json
+
+###
+#更新风格
+PATCH http://localhost:8001/api/basic_info/style
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "kkk"
+}
+
+###
+#根据id删除风格
+DELETE http://localhost:8001/api/basic_info/style?id=4
+Accept: application/json
+
+###
+#添加风格
+POST http://localhost:8001/api/basic_info/style
+Content-Type: application/json
+
+{
+  "name": "防守反击",
+  "description": "注重防守，获取到球权之后靠速度反击进攻",
+  "typicalTeam": "皇家马德里"
+}
+
+###
+#根据id查询国家
+GET http://localhost:8001/api/basic_info/nation/3
+Accept: application/json
+
+###
+#获取国家列表
+GET http://localhost:8001/api/basic_info/nations
+Accept: application/json
+
+###
+#更新国家
+PATCH http://localhost:8001/api/basic_info/nation
+Content-Type: application/json
+
+{
+  "id": 4,
+  "name": "巴西"
+}
+
+###
+#根据id删除国家
+DELETE http://localhost:8001/api/basic_info/nation?id=4
+Accept: application/json
+
+###
+#添加国家
+POST http://localhost:8001/api/basic_info/nation
+Content-Type: application/json
+
+{
+  "name": "美国"
+}
+
+###
+#根据id查询球员
+GET http://localhost:8001/api/basic_info/player/3
+Accept: application/json
+
+###
+#获取球员列表
+GET http://localhost:8001/api/basic_info/players
+Accept: application/json
+
+###
+#更新球员信息
+PATCH http://localhost:8001/api/basic_info/player
+Content-Type: application/json
+
+{
+  "id": 2,
+  "playerName": "阿凡达"
+}
+
+###
+#根据id删除球员
+DELETE http://localhost:8001/api/basic_info/player?id=3
+Accept: application/json
+
+###
+#添加球员
+POST http://localhost:8001/api/basic_info/player
+Content-Type: application/json
+
+{
+  "playerNum": 2,
+  "playerName": "郝海东",
+  "nationId": 1,
+  "teamId": 1,
+  "height": 185.5,
+  "weight": 72.2,
+  "age": 28,
+  "num": 10,
+  "position": "前锋",
+  "history": "中超最佳射手"
+}
+
+###
+#根据id获取队伍
+GET http://localhost:8001/api/basic_info/team/2
+Accept: application/json
+
+###
+#获取队伍列表
+GET http://localhost:8001/api/basic_info/teams
+Accept: application/json
+
+###
+#更新队伍
+PATCH http://localhost:8001/api/basic_info/team
+Content-Type: application/json
+
+{
+  "id": 4,
+  "teamName": "韩国队"
+}
+
+###
+#根据id删除队伍
+DELETE http://localhost:8001/api/basic_info/team?id=2
+Accept: application/json
+
+###
+#添加队伍
+POST http://localhost:8001/api/basic_info/team
+Content-Type: application/json
+
+{
+  "teamNum": 2,
+  "teamName": "日本队",
+  "nationId": 2,
+  "createTime": "1921-01-03",
+  "teamSize": 20,
+  "headCoachId": 2
+}
+
+###
+#根据活动id查询用户
+GET http://localhost:8001/api/meet/user/activity/1
+Accept: application/json
+
+###
+#根据uid查询参加的活动
+GET http://localhost:8001/api/meet/activity/user/2
+Accept: application/json
+
+###
+#更新活动用户
+PATCH http://localhost:8001/api/meet/activity/user
+Content-Type: application/json
+
+{
+  "id": 2,
+  "activityId": 1,
+  "userId": 2
+}
+
+###
+#根据id删除活动用户关系
+DELETE http://localhost:8001/api/meet/activity/user?id=3
+Accept: application/json
+
+###
+#添加活动用户
+POST http://localhost:8001/api/meet/activity/user
+Content-Type: application/json
+
+{
+  "activityId": 1,
+  "userId": 2
+}
+
+###
+#根据发起者id来查询活动
+GET http://localhost:8001/api/meet/activity/2
+Accept: application/json
+
+###
+#查询活动列表
+GET http://localhost:8001/api/meet/activities
+Accept: application/json
+
+###
+#更新活动
+PATCH http://localhost:8001/api/meet/activity
+Content-Type: application/json
+
+{
+  "id": 1,
+  "limitCount": 14,
+  "sponsorId": 2,
+  "notice": "在东北大学集合"
+}
+
+###
+#删除活动
+DELETE http://localhost:8001/api/meet/activity?id=1
+Accept: application/json
+
+###
+#添加活动
+POST http://localhost:8001/api/meet/activity
+Content-Type: application/json
+
+{
+  "id": 1,
+  "geoId": 1,
+  "startTime": "2021-04-20 15:22:40",
+  "endTime": "2021-04-20 15:25:30",
+  "sponsorId": 1,
+  "limitCount": 12,
+  "notice": "在东北林业大学操场集合，自带水。"
+}
+
+###
+#根据id获取位置
+GET http://localhost:8001/api/meet/location/2
+Accept: application/json
+
+###
+#获取位置列表
+GET http://localhost:8001/api/meet/locations
+Accept: application/json
+
+###
+#更新位置
+PATCH http://localhost:8001/api/meet/location
+Content-Type: application/json
+
+{
+  "id": 1,
+  "geoNote": "东林"
+}
+
+###
+#删除位置
+DELETE http://localhost:8001/api/meet/location?id=3
+Accept: application/json
+
+###
+#添加位置
+POST http://localhost:8001/api/meet/location
+Content-Type: application/json
+
+{
+  "geoType": "政治地理位置",
+  "latitude": "126.638184",
+  "longitude": "45.720741",
+  "geoNote": "东北林业大学，是全国林业专业排行榜前几的大学，同时是一所211双一流综合性大学。欢饮大家报考"
+}
+
+###
+PATCH http://localhost:8001/api/user/friends
+Content-Type: application/json
+
+{
+  "friends": {
+    "useraId": 1,
+    "userbId": 2
+  }
+}
+
+###
+#删除好友
+DELETE http://localhost:8001/api/user/friends?ida=1&idb=2
+Accept: application/json
+
+###
+#添加好友
+POST http://localhost:8001/api/user/friends
+Content-Type: application/json
+
+{
+  "useraId": 1,
+  "userbId": 2
+}
+
+###
+#用户退出群聊
+DELETE http://localhost:8001/api/chat_room/user?id=2
+Accept: application/json
+
+###
+#用户撤回消息
+DELETE http://localhost:8001/api/chat_room/message?id=8
+Accept: application/json
+
+###
+#用户发送信息到群中
+POST http://localhost:8001/api/chat_room/message
+Content-Type: application/json
+
+{
+  "chatRoomId": 1,
+  "userId": 3,
+  "messageType": 1,
+  "sendTime": "2021-04-21 14:36:40"
+}
+
+###
+#用户加入群聊
+POST http://localhost:8001/api/chat_room/user
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "roomId": 2
+}
+
+###
+#根据id查看赛程
+GET http://localhost:8001/api/schedule/schedule/3
+Accept: application/json
+
+###
+#查看赛程列表
+GET http://localhost:8001/api/schedule/schedules
+Accept: application/json
+
+###
+#更新赛程
+PATCH http://localhost:8001/api/schedule/schedule
+Content-Type: application/json
+
+{
+  "id": 3,
+  "currentHomeTeamScore": 1,
+  "currentVisitorTeamScore": 2
+}
+
+###
+#根据id删除赛程
+DELETE http://localhost:8001/api/schedule/schedule?id=2
+Accept: application/json
+
+###
+#添加赛程
+POST http://localhost:8001/api/schedule/schedule
+Content-Type: application/json
+
+{
+  "matchTime": "2021-04-21 12:00:00",
+  "matchDate": "2021-04-21",
+  "leagueName": "西甲",
+  "homeTeamName": "巴塞罗那",
+  "visitorTeamName": "皇家马德里",
+  "currentHomeTeamScore": 0,
+  "currentVisitorTeamScore": 0
+}
+
+###
+#删除动态话题
+DELETE http://localhost:8001/api/mood/tag/mood?id=1
+Accept: application/json
+
+###
+#添加动态话题
+POST http://localhost:8001/api/mood/tag/mood
+Content-Type: application/json
+
+{
+  "moodId": 2,
+  "tagId": 1
+}
+
+###
+#根据id查看话题
+GET http://localhost:8001/api/mood/tag/2
+Accept: application/json
+
+###
+#查看所有话题
+GET http://localhost:8001/api/mood/tags
+Accept: application/json
+
+###
+#更新话题
+PATCH http://localhost:8001/api/mood/tag
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "日常扯淡"
+}
+
+###
+#删除话题
+DELETE http://localhost:8001/api/mood/tag?id=1
+Accept: application/json
+
+###
+#添加话题
+POST http://localhost:8001/api/mood/tag
+Content-Type: application/json
+
+{
+  "name": "直抒胸臆"
+}
+
+###
+#根据id查看动态
 GET http://localhost:8001/api/mood/mood/1
 Accept: application/json
 
 ###
+#查看动态列表
 GET http://localhost:8001/api/mood/moods
 Accept: application/json
 
@@ -28,9 +532,9 @@ POST http://localhost:8001/api/mood/mood
 Content-Type: application/json
 
 {
-  "userId": 1,
-  "content": "我不喜欢写傻逼代码",
-  "likeCount": 2000
+  "userId": 2,
+  "releaseTime": "2021-04-21 15:43:02",
+  "content": "我喜欢写傻逼代码"
 }
 
 ###
@@ -67,10 +571,9 @@ POST http://localhost:8001/api/chat_room/chat_room
 Content-Type: application/json
 
 {
-  "id": 2,
-  "categoryId": 0,
-  "specificId": 1,
-  "notice": "测试一个群",
+  "basicInfoId": 3,
+  "name": "巴西队粉丝群",
+  "notice": "请个位粉丝理性讨论，和谐交流!群内不允许任何形式的广告出现，违者踢!!",
   "managerId": 1
 }
 
@@ -109,11 +612,12 @@ POST http://localhost:8001/api/comment/comment
 Content-Type: application/json
 
 {
-  "videoId": 4,
-  "moodId": 1,
-  "userId": 1,
-  "commentContent": "我最爱梅西了",
-  "likeNum": 100
+  "videoId": 1,
+  "commenterId": 3,
+  "commentContent": "你的评论我喜欢，你的私信记得关.",
+  "commentTime": "2021-04-21 11:23:30",
+  "replyId": 1,
+  "level": 1
 }
 
 ###
@@ -127,7 +631,7 @@ GET http://localhost:8001/api/video/videos
 Accept: application/json
 
 ###
-#跟新视频
+#更新视频
 PATCH http://localhost:8001/api/video/video
 Content-Type: application/json
 
@@ -153,14 +657,22 @@ POST http://localhost:8001/api/video/video
 Content-Type: application/json
 
 {
-  "videoTitle": "震惊，西班牙排名第一的球队竟然输给一支中国球队!!!",
-  "videoLink": "https://v.qq.com/live/p/topic/109042/index.html",
-  "videoThumbnail": "C://JoinUs",
-  "videoDuration": 5400,
-  "videoDescription": "国际奇闻",
-  "videoState": 2,
-  "videoAuthor": "qyj"
+  "videoTitle": "巴塞罗那VS皇家马德里比赛直播",
+  "videoLink": "https://sports.qq.com/kbsweb/game.htm?mid=208:2202517",
+  "videoCreated": "2021-04-21 10:57:20",
+  "videoDescription": "本比赛由虎扑体育提供",
+  "videoViewTimes": 100,
+  "videoState": 1,
+  "videoAuthor": "qyj",
+  "signalLink": "虎扑直播",
+  "scheduleId": 1
 }
+
+###
+#获取用户信息
+GET http://localhost:8001/api/user/info
+Accept: application/json
+uid: 1
 
 ###
 #查询角色和权限对应关系集合
@@ -216,8 +728,8 @@ POST http://localhost:8001/api/user/user
 Content-Type: application/json
 
 {
-  "name": "王雷",
-  "num": "002",
+  "name": "王五",
+  "num": "003",
   "password": "123456",
   "icon": "D://xxx"
 }
@@ -236,5 +748,3 @@ Content-Type: application/json
 #验证码
 GET http://localhost:8001/api/user/verifyCode?timestamp=1617934675998
 Accept: application/json
-
-###

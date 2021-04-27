@@ -20,6 +20,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public int saveComment(Comment c) {
+        //新添加的评论点赞数一定是0。点赞数只能通过后期来更改。
+        c.setLikeNum(0);
         return commentMapper.insert(c);
     }
 
